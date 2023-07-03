@@ -31,6 +31,10 @@ npm run start:prod
 ```
 npm run build
 ```
+4. Run jest tests
+```
+npm run test
+```
 
 **Implemented endpoint** `api/users`
  - GET `api/users`
