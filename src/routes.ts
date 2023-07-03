@@ -4,7 +4,7 @@ import { UsersRepository } from "./users/users.repository";
 import { UsersService } from "./users/users.service";
 import { IncomingMessage, ServerResponse } from 'node:http';
 
-export const usersRepository = new UsersRepository();
+const usersRepository = new UsersRepository();
 const usersService = new UsersService(usersRepository);
 const usersController = new UsersController(usersService);
 
