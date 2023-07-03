@@ -1,6 +1,6 @@
 # Simple CRUD API
 
-### Installation
+## Installation
 
 1. Open terminal and go to directory where you want to put code
 2. Use next command to download code from repository
@@ -14,7 +14,7 @@ https://github.com/SheshkoPavel/node-CRUD-API.git
 npm i
 ```
 
-### Configuration
+## Configuration
 
 Server port for listening incomings requests can be configured in .env file **(you must create it, or change .env.example)**
 
