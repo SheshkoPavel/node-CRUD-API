@@ -4,6 +4,7 @@ import { NotFoundError, ValidationError } from "../errors";
 import { CreateUserDto } from "./createUser.dto";
 import { User } from "./user.model";
 import { UsersRepository } from "./users.repository";
+import { UpdateUserDto } from './updateUser.dto';
 
 export class UsersService {
     constructor(private readonly usersRepository: UsersRepository) { }
@@ -26,9 +27,21 @@ export class UsersService {
         return user;
     }
 
+    async update(id: string, input: UpdateUserDto): Promise<User> {
+		await this.findOne(id);
+
+		const result = this.usersRepository.update(id, input);
+		return result;
+	}
+
+	async remove(id: string): Promise<User> {
+		await this.findOne(id);
+		return this.usersRepository.remove(id);
+	}
+
     validateUserId(id: string) {
         if (!uuid.validate(id)) {
-            throw new ValidationError('User id is not valid');
+            throw new ValidationError(`User id ${id} is not valid`);
         }
     }
 

@@ -9,7 +9,7 @@ const usersService = new UsersService(usersRepository);
 const usersController = new UsersController(usersService);
 
 export const routes = async function (req: IncomingMessage, res: ServerResponse) {
-    console.log(`Worker ${process.pid} requested`);
+    console.log(`Worker pid ${process.pid} requested`);
     res.setHeader('Content-Type', 'application/json');
 
     const [api, users, id, ...rest] = req.url.split('/').filter(Boolean);
@@ -41,7 +41,13 @@ export const routes = async function (req: IncomingMessage, res: ServerResponse)
 
                     statusCode = 201;
                     break;
-
+                case 'PUT':
+                	result = await usersController.update(id, body);
+                	break;
+                case 'DELETE':
+                	result = await usersController.remove(id);
+                	statusCode = 204;
+                	break;
                 default:
                     throw new Error('Method does not exist');
             }
