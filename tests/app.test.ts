@@ -14,7 +14,7 @@ describe('API tests', () => {
 		hobbies: ['dance', 'eat'],
 	});
 
-	afterEach(async () => {
+	afterAll(async () => {
 		await app.close();
 	});
 
